@@ -1,6 +1,6 @@
-source 'https://rubygems.org'
+source "https://rubygems.org"
 
-gem 'sinatra'
-gem 'json'
-gem 'rack-contrib'
-gem 'activesupport'
+gem "sinatra"
+gem "json"
+gem "rack-contrib"
+gem "activesupport"
