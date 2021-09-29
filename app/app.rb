@@ -5,6 +5,7 @@ require "rack/contrib"
 require "sinatra"
 
 require_relative "util"
+require_relative "model"
 require_relative "move"
 
 use Rack::PostBodyContentTypeParser
@@ -36,10 +37,10 @@ end
 # Valid moves are "up", "down", "left", or "right".
 # TODO: Use the information in rack.request.form_hash to decide your next move.
 post "/move" do
-  request = underscore(env["rack.request.form_hash"])
+  game_state = GameState.parse(underscore(env["rack.request.form_hash"]))
 
   # Implement move logic in app/move.rb
-  response = move(request)
+  response = move(game_state)
   content_type :json
   camelcase(response).to_json
 end
